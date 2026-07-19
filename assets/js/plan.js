@@ -13,7 +13,7 @@ var TripPlan = (function () {
     if (t.indexOf("train") !== -1 || t.indexOf("railway") !== -1 || t.indexOf("gondola") !== -1 ||
         t.indexOf("cogwheel") !== -1 || t.indexOf("bus") !== -1 || t.indexOf("ferry") !== -1 ||
         t.indexOf("change at") !== -1 || t.indexOf("connection") !== -1 || t.indexOf("descent") !== -1 ||
-        t.indexOf("→") !== -1) return "train";
+        t.indexOf("→") !== -1 || t.indexOf("express") !== -1 || t.indexOf("mountain line") !== -1) return "train";
     if (t.indexOf("breakfast") !== -1 || t.indexOf("lunch") !== -1 || t.indexOf("dinner") !== -1 ||
         t.indexOf("brunch") !== -1 || t.indexOf("caf") !== -1 || t.indexOf("coffee") !== -1 ||
         t.indexOf("gelato") !== -1 || t.indexOf("wake") !== -1) return "food";
@@ -27,6 +27,19 @@ var TripPlan = (function () {
 
   function mapsUrl(query) {
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
+  }
+
+  function searchUrl(query) {
+    return "https://www.google.com/search?q=" + encodeURIComponent(query);
+  }
+
+  function transportMode(title) {
+    var t = title.toLowerCase();
+    if (t.indexOf("gondola") !== -1) return { label: "Gondola / cable car", icon: "🚡" };
+    if (t.indexOf("cogwheel") !== -1) return { label: "Cogwheel railway", icon: "🚞" };
+    if (t.indexOf("ferry") !== -1) return { label: "Ferry", icon: "⛴️" };
+    if (t.indexOf("bus") !== -1) return { label: "Bus", icon: "🚌" };
+    return { label: "Train", icon: "🚆" };
   }
 
   function loadOverlay() {
@@ -120,6 +133,14 @@ var TripPlan = (function () {
       '  <div class="t-body">' +
       '    <p class="t-detail">' + safe(item.detail) + '</p>' +
       (item.note ? '    <p class="t-note">' + safe(item.note) + '</p>' : "") +
+      (cat === "train"
+        ? (function () {
+            var m = transportMode(item.title || "");
+            return '<span class="t-transport-badge">' + m.icon + ' ' + m.label + '</span>' +
+              '<a class="t-search-link" href="' + searchUrl(item.map_query || item.title || "") +
+              '" target="_blank" rel="noopener">&#128269; Search on Google</a>';
+          })()
+        : "") +
       (item.map_query
         ? '    <a class="t-map-link" href="' + mapsUrl(item.map_query) + '" target="_blank" rel="noopener">&#128205; Open in Google Maps</a>'
         : "") +

@@ -31,7 +31,7 @@
       "detail": "Take the direct scenic train from Lucerne to Interlaken Ost. The route passes Lake Sarnen, Lake Lungern, Brünig Pass, Meiringen and Lake Brienz.",
       "note": "Sit on the right-hand side initially, although views change sides. No panoramic surcharge is required.",
       "map_query": "Interlaken Ost railway station, Switzerland",
-      "category": "default"
+      "category": "train"
     },
     {
       "id": "day1-change-at-interlaken-ost",
@@ -352,7 +352,7 @@
       "detail": "Travel Spiez → Frutigen → Kandersteg → Brig using the older mountain route. Enjoy viaducts, curves, mountain valleys and the descent into the Rhône Valley.",
       "note": "Try the right-hand side from Spiez toward Brig, though scenery is visible on both sides.",
       "map_query": "Kandersteg railway station, Switzerland",
-      "category": "default"
+      "category": "train"
     },
     {
       "id": "day2-change-at-brig",

@@ -429,11 +429,13 @@ tbody tr:nth-child(even) { background: rgba(31, 78, 120, 0.04); }
   content: "\2615\FE0E  ";
 }
 
-.t-card .t-map-link {
+.t-card .t-map-link,
+.t-card .t-search-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   margin-top: 10px;
+  margin-right: 6px;
   padding: 5px 12px;
   border-radius: 999px;
   background: transparent;
@@ -445,10 +447,35 @@ tbody tr:nth-child(even) { background: rgba(31, 78, 120, 0.04); }
   opacity: 0.85;
 }
 
-.t-card .t-map-link:hover {
+.t-card .t-map-link:hover,
+.t-card .t-search-link:hover {
   background: var(--color-primary);
   color: #fff;
   opacity: 1;
+}
+
+.t-card .t-search-link {
+  color: var(--color-train);
+  border-color: var(--color-train);
+}
+
+.t-card .t-search-link:hover {
+  background: var(--color-train);
+  color: #fff;
+}
+
+.t-card .t-transport-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  margin-right: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(31, 78, 120, 0.1);
+  color: var(--color-train);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 /* ---------- Live now/next highlight ---------- */
