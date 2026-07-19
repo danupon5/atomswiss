@@ -1,4 +1,4 @@
-const CACHE_NAME = "trip-cache-v5";
+const CACHE_NAME = "trip-cache-v6";
 const PRECACHE_URLS = [
   "index.html",
   "day1.html",
