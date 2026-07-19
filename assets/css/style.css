@@ -132,14 +132,34 @@ img { max-width: 100%; }
 
 /* ---------- Hero ---------- */
 .hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: #fff;
   padding: 48px 0 36px;
 }
 
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-illustration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
 .hero h1 {
   margin: 0 0 8px;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .hero .subtitle {
@@ -361,6 +381,28 @@ tbody tr:nth-child(even) { background: rgba(31, 78, 120, 0.04); }
 
 .t-card .t-note::before {
   content: "\2615\FE0E  ";
+}
+
+.t-card .t-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  opacity: 0.85;
+}
+
+.t-card .t-map-link:hover {
+  background: var(--color-primary);
+  color: #fff;
+  opacity: 1;
 }
 
 @media (max-width: 640px) {
