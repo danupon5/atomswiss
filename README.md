@@ -29,15 +29,30 @@ changes are saved to that browser's local storage (per day, per device —
 doesn't sync between your phone and laptop). Use the "Reset this day's
 plan" link next to a day's heading to undo everything for that day.
 
+There's also a dedicated **Edit Plan** page (nav bar, every page) for more
+deliberate restructuring: drag rows to reorder within a day, type in a place
+to add it, remove things, and optionally click "Ask AI to organize this
+day" to get a suggested order/timing with a travel note between stops.
+**AI-suggested times are estimates, not real timetables** — this site has
+no live SBB/Trenord/transit-API integration, so anything AI proposes is
+general-knowledge guesswork, always shown behind a clear warning banner and
+never applied until you click Apply. Verify real train/bus times against
+SBB, Trenord or Google Maps before travelling. Saving on this page uses the
+same local-storage overlay as the chat, so edits show up on the regular day
+pages too.
+
 ## Structure
 
 - `index.html` — trip overview, day cards (today's day is auto-highlighted), advance booking checklist, timing rules
 - `day1.html` … `day4.html` — hour-by-hour timeline for each day (each card is individually collapsible), plus day-specific notes (weather alternative, mountain safety, relaxed alternative). Each stop links out to Google Maps.
+- `plan.html` — dedicated drag-and-drop plan editor (add/remove/reorder, optional AI-drafted ordering)
 - `assets/css/style.css` — shared styling
 - `assets/js/main.js` — mobile nav toggle, live now/next highlighting, service worker registration
-- `assets/js/plan.js` — applies saved local plan edits (added/hidden items) on top of the static page
+- `assets/js/plan.js` — applies saved local plan edits (added/hidden/reordered/re-timed items) on top of the static pages
+- `assets/js/plan-editor.js` — the Edit Plan page's drag-and-drop list, AI "organize this day" flow
 - `assets/js/chat.js` — "Ask about your trip" AI chat widget (bring-your-own Gemini key), can propose plan edits
 - `assets/data/trip-context.json` — itinerary text (with stable item ids) fed to the AI as context
+- `assets/data/trip-items.json` — the same itinerary as structured data, used by the plan editor
 - `manifest.webmanifest` / `sw.js` — offline install support (PWA)
 
 ## Run locally

@@ -851,6 +851,278 @@ footer {
 .ai-action-btn:hover { opacity: 0.9; }
 .ai-action-btn:disabled { opacity: 0.6; cursor: default; }
 
+/* ---------- Plan editor page ---------- */
+.editor-main { padding-top: 32px; }
+
+.editor-hint {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  margin: 0 0 18px;
+}
+
+.editor-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.editor-tab {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.editor-tab.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.editor-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 10px 12px;
+  cursor: grab;
+}
+
+.editor-row.dragging { opacity: 0.4; }
+.editor-row.drag-over { border-color: var(--color-primary); border-style: dashed; }
+.editor-row-pending { border-style: dashed; }
+.editor-row-added .editor-row-title { color: var(--color-view); }
+
+.editor-row-handle {
+  color: var(--color-muted);
+  font-size: 1rem;
+  cursor: grab;
+  flex: none;
+}
+
+.editor-row-time {
+  flex: none;
+  width: 108px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--color-primary);
+}
+
+.editor-row-title {
+  flex: 1;
+  font-size: 0.92rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editor-row-map {
+  flex: none;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.editor-row-remove {
+  flex: none;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.editor-row-remove:hover { color: var(--color-hotel); }
+
+.editor-hidden-section {
+  margin: 0 0 20px;
+  padding: 12px;
+  border: 1px dashed var(--color-border);
+  border-radius: 10px;
+}
+
+.editor-hidden-title {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.editor-hidden-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.editor-hidden-chip {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.editor-hidden-chip:hover { border-color: var(--color-hike); color: var(--color-hike); }
+
+.editor-add-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.editor-add-input {
+  flex: 1;
+  font: inherit;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.editor-add-btn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editor-add-btn:hover { background: var(--color-primary); color: #fff; }
+
+.editor-ai-btn {
+  display: block;
+  width: 100%;
+  background: var(--color-view);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.editor-ai-btn:hover { opacity: 0.9; }
+.editor-ai-btn:disabled { opacity: 0.6; cursor: default; }
+
+.editor-draft-preview { margin-bottom: 16px; }
+
+.editor-draft-banner {
+  background: rgba(201, 111, 52, 0.12);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.editor-draft-error {
+  background: rgba(176, 57, 63, 0.1);
+  border-left: 4px solid var(--color-hotel);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+
+.editor-draft-summary { font-size: 0.88rem; color: var(--color-muted); margin: 0 0 10px; }
+
+.editor-draft-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editor-draft-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.editor-draft-row .editor-row-time { width: auto; }
+.editor-draft-travel { color: var(--color-muted); font-size: 0.8rem; font-style: italic; }
+
+.editor-draft-actions { display: flex; gap: 10px; }
+
+.editor-draft-apply, .editor-draft-dismiss {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.editor-draft-apply { background: var(--color-hike); color: #fff; }
+.editor-draft-dismiss { background: var(--color-bg); color: var(--color-muted); border: 1px solid var(--color-border); }
+
+.editor-save-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.editor-save-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editor-save-btn:hover { background: var(--color-primary-dark); }
+
+.editor-reset-btn {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  text-decoration: underline;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.editor-reset-btn:hover { color: var(--color-hotel); }
+
+.editor-save-status { color: var(--color-hike); font-size: 0.85rem; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .editor-row-time { width: 78px; font-size: 0.76rem; }
+  .editor-row-title { font-size: 0.86rem; }
+}
+
 @media print {
   .site-nav, .nav-toggle, .day-pager, .ai-fab, .ai-panel { display: none; }
   .hero { background: none; color: var(--color-ink); }

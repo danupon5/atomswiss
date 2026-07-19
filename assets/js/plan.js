@@ -41,14 +41,24 @@ var TripPlan = (function () {
     localStorage.setItem(OVERLAY_KEY, JSON.stringify(overlay));
   }
 
+  function emptyDayOverlay() {
+    return { hidden: [], added: [], overrides: {}, order: null };
+  }
+
   function getDayOverlay(isoDate) {
     var overlay = loadOverlay();
-    return overlay[isoDate] || { hidden: [], added: [] };
+    var day = overlay[isoDate] || {};
+    return {
+      hidden: day.hidden || [],
+      added: day.added || [],
+      overrides: day.overrides || {},
+      order: day.order || null
+    };
   }
 
   function addItem(isoDate, item) {
     var overlay = loadOverlay();
-    if (!overlay[isoDate]) overlay[isoDate] = { hidden: [], added: [] };
+    if (!overlay[isoDate]) overlay[isoDate] = emptyDayOverlay();
     if (!item.id) item.id = "added-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
     overlay[isoDate].added.push(item);
     saveOverlay(overlay);
@@ -56,10 +66,21 @@ var TripPlan = (function () {
 
   function hideItem(isoDate, itemId) {
     var overlay = loadOverlay();
-    if (!overlay[isoDate]) overlay[isoDate] = { hidden: [], added: [] };
+    if (!overlay[isoDate]) overlay[isoDate] = emptyDayOverlay();
     if (overlay[isoDate].hidden.indexOf(itemId) === -1) {
       overlay[isoDate].hidden.push(itemId);
     }
+    saveOverlay(overlay);
+  }
+
+  function saveDayOverlay(isoDate, dayOverlay) {
+    var overlay = loadOverlay();
+    overlay[isoDate] = {
+      hidden: dayOverlay.hidden || [],
+      added: dayOverlay.added || [],
+      overrides: dayOverlay.overrides || {},
+      order: dayOverlay.order || null
+    };
     saveOverlay(overlay);
   }
 
@@ -157,9 +178,29 @@ var TripPlan = (function () {
       if (!inserted) timeline.appendChild(li);
     });
 
+    Object.keys(dayOverlay.overrides || {}).forEach(function (id) {
+      var li = timeline.querySelector('[data-item-id="' + id + '"]');
+      if (!li) return;
+      var ov = dayOverlay.overrides[id];
+      if (ov.start) li.setAttribute("data-start", ov.start);
+      if (ov.end) li.setAttribute("data-end", ov.end);
+      if (ov.time) {
+        var timeEl = li.querySelector(".t-time");
+        if (timeEl) timeEl.textContent = ov.time;
+      }
+    });
+
+    if (dayOverlay.order && dayOverlay.order.length) {
+      dayOverlay.order.forEach(function (id) {
+        var li = timeline.querySelector('[data-item-id="' + id + '"]');
+        if (li) timeline.appendChild(li);
+      });
+    }
+
     var resetBtn = document.querySelector(".reset-day-link");
     if (resetBtn) {
-      var hasOverlay = dayOverlay.hidden.length > 0 || dayOverlay.added.length > 0;
+      var hasOverlay = dayOverlay.hidden.length > 0 || dayOverlay.added.length > 0 ||
+        Object.keys(dayOverlay.overrides || {}).length > 0 || !!dayOverlay.order;
       resetBtn.hidden = !hasOverlay;
       resetBtn.addEventListener("click", function () {
         resetDay(isoDate);
@@ -172,7 +213,11 @@ var TripPlan = (function () {
     apply: apply,
     addItem: addItem,
     hideItem: hideItem,
+    saveDayOverlay: saveDayOverlay,
     resetDay: resetDay,
-    getDayOverlay: getDayOverlay
+    getDayOverlay: getDayOverlay,
+    buildItemLi: buildItemLi,
+    categorize: categorize,
+    mapsUrl: mapsUrl
   };
 })();

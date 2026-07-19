@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit Plan — Switzerland &amp; Italy Trip 2026</title>
+<meta name="description" content="Drag to reorder, add places, or let AI draft a route for each day of the Switzerland &amp; Italy trip.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="theme-color" content="#1f4e78">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a class="brand" href="index.html">🏔️ Switzerland &amp; Italy 2026</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="day1.html">Day 1 · Grindelwald</a>
+      <a href="day2.html">Day 2 · Zermatt</a>
+      <a href="day3.html">Day 3 · Brig</a>
+      <a href="day4.html">Day 4 · Milan</a>
+      <a href="plan.html" class="active">✏️ Edit Plan</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="hero-illustration" viewBox="0 0 800 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="0,150 100,70 180,130 260,55 340,140 430,90 520,150 620,75 700,135 800,100 800,200 0,200" fill="#ffffff" opacity="0.08"/>
+    <polygon points="0,170 90,120 190,165 300,100 420,170 540,115 650,168 800,130 800,200 0,200" fill="#ffffff" opacity="0.12"/>
+  </svg>
+  <div class="container">
+    <h1>Edit Plan</h1>
+    <p class="subtitle">Drag to reorder, add a place, or let AI draft the order and timing.</p>
+  </div>
+</header>
+
+<main class="container editor-main">
+
+  <section id="editor">
+    <div class="editor-tabs"></div>
+
+    <p class="editor-hint">Changes save to this browser only (same as the AI chat). Drag the &#9776; handle to
+      reorder within the day. Uses the same Gemini API key you set in the chat button (bottom-right).</p>
+
+    <ul class="editor-list"></ul>
+
+    <div class="editor-hidden-section" hidden>
+      <p class="editor-hidden-title"></p>
+      <div class="editor-hidden-chips"></div>
+    </div>
+
+    <div class="editor-add-row">
+      <input type="text" class="editor-add-input" placeholder="Add a place, e.g. &ldquo;chocolate shop in Zermatt&rdquo;">
+      <button type="button" class="editor-add-btn">+ Add</button>
+    </div>
+
+    <button type="button" class="editor-ai-btn">🪄 Ask AI to organize this day</button>
+    <div class="editor-draft-preview" hidden></div>
+
+    <div class="editor-save-bar">
+      <button type="button" class="editor-save-btn">💾 Save this day</button>
+      <button type="button" class="editor-reset-btn">↺ Reset this day</button>
+      <span class="editor-save-status" hidden></span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Switzerland &amp; Italy Trip Itinerary · 29 July&ndash;1 August 2026
+  </div>
+</footer>
+
+<script src="assets/js/plan.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/plan-editor.js"></script>
+<script src="assets/js/chat.js" defer></script>
+</body>
+</html>
