@@ -1,0 +1,14 @@
+{
+  "name": "Switzerland & Italy Trip 2026",
+  "short_name": "CH-IT Trip",
+  "description": "Detailed 4-day Switzerland to Italy trip itinerary: Lucerne, Grindelwald, Zermatt, Brig and Lake Como.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f7f5f0",
+  "theme_color": "#1f4e78",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
