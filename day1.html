@@ -44,14 +44,18 @@
 <main class="container">
 
   <section id="timeline">
-    <h2>Hour-by-Hour Plan</h2>
+    <div class="timeline-heading-row">
+      <h2>Hour-by-Hour Plan</h2>
+      <button type="button" class="reset-day-link" hidden>&#8630; Reset this day&rsquo;s plan</button>
+    </div>
+    <p class="hidden-items-toggle" hidden></p>
     <ul class="timeline" data-date="2026-07-29">
-      <li class="timeline-item cat-food" data-start="05:15" data-end="05:30">
+      <li class="timeline-item cat-food" data-item-id="day1-wake-up-and-prepare" data-start="05:15" data-end="05:30">
         <div class="t-time">05:15–05:30</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> Wake up and prepare</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> <span class="t-title-text">Wake up and prepare</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -61,12 +65,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="05:30" data-end="05:50">
+      <li class="timeline-item cat-train" data-item-id="day1-hotel-lucerne-station" data-start="05:30" data-end="05:50">
         <div class="t-time">05:30–05:50</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Hotel → Lucerne station</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Hotel → Lucerne station</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -76,12 +80,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-default" data-start="06:06" data-end="07:55">
+      <li class="timeline-item cat-default" data-item-id="day1-luzern-interlaken-express" data-start="06:06" data-end="07:55">
         <div class="t-time">06:06–07:55</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> Luzern–Interlaken Express</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> <span class="t-title-text">Luzern–Interlaken Express</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -91,12 +95,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="07:55" data-end="08:05">
+      <li class="timeline-item cat-train" data-item-id="day1-change-at-interlaken-ost" data-start="07:55" data-end="08:05">
         <div class="t-time">07:55–08:05</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Change at Interlaken Ost</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Change at Interlaken Ost</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -106,12 +110,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="08:05" data-end="08:40">
+      <li class="timeline-item cat-train" data-item-id="day1-interlaken-ost-grindelwald" data-start="08:05" data-end="08:40">
         <div class="t-time">Approx. 08:05–08:40</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Interlaken Ost → Grindelwald</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Interlaken Ost → Grindelwald</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -121,12 +125,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-hotel" data-start="08:40" data-end="09:05">
+      <li class="timeline-item cat-hotel" data-item-id="day1-hotel-luggage-drop" data-start="08:40" data-end="09:05">
         <div class="t-time">08:40–09:05</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🏨</span> Hotel luggage drop</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🏨</span> <span class="t-title-text">Hotel luggage drop</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -136,12 +140,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-hike" data-start="09:05" data-end="09:20">
+      <li class="timeline-item cat-hike" data-item-id="day1-walk-to-first-gondola-station" data-start="09:05" data-end="09:20">
         <div class="t-time">09:05–09:20</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> Walk to First gondola station</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> <span class="t-title-text">Walk to First gondola station</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -151,12 +155,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="09:20" data-end="09:50">
+      <li class="timeline-item cat-train" data-item-id="day1-gondola-to-first" data-start="09:20" data-end="09:50">
         <div class="t-time">09:20–09:50</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Gondola to First</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Gondola to First</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -166,12 +170,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-view" data-start="09:50" data-end="10:10">
+      <li class="timeline-item cat-view" data-item-id="day1-first-arrival-and-viewpoint-walk" data-start="09:50" data-end="10:10">
         <div class="t-time">09:50–10:10</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> First arrival and viewpoint walk</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> <span class="t-title-text">First arrival and viewpoint walk</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -181,12 +185,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-default" data-start="10:10" data-end="10:40">
+      <li class="timeline-item cat-default" data-item-id="day1-first-cliff-walk" data-start="10:10" data-end="10:40">
         <div class="t-time">10:10–10:40</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> First Cliff Walk</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> <span class="t-title-text">First Cliff Walk</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -196,12 +200,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-view" data-start="10:40" data-end="11:15">
+      <li class="timeline-item cat-view" data-item-id="day1-first-view-and-summit-area" data-start="10:40" data-end="11:15">
         <div class="t-time">10:40–11:15</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> First View and summit area</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> <span class="t-title-text">First View and summit area</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -211,12 +215,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-food" data-start="11:15" data-end="11:50">
+      <li class="timeline-item cat-food" data-item-id="day1-early-lunch-at-first" data-start="11:15" data-end="11:50">
         <div class="t-time">11:15–11:50</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> Early lunch at First</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> <span class="t-title-text">Early lunch at First</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -226,12 +230,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="11:50" data-end="12:20">
+      <li class="timeline-item cat-train" data-item-id="day1-gondola-descent" data-start="11:50" data-end="12:20">
         <div class="t-time">11:50–12:20</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Gondola descent</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Gondola descent</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -241,12 +245,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-hike" data-start="12:20" data-end="12:40">
+      <li class="timeline-item cat-hike" data-item-id="day1-walk-to-railway-station" data-start="12:20" data-end="12:40">
         <div class="t-time">12:20–12:40</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> Walk to railway station</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> <span class="t-title-text">Walk to railway station</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -256,12 +260,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="12:45" data-end="13:20">
+      <li class="timeline-item cat-train" data-item-id="day1-grindelwald-kleine-scheidegg" data-start="12:45" data-end="13:20">
         <div class="t-time">Approx. 12:45–13:20</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Grindelwald → Kleine Scheidegg</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Grindelwald → Kleine Scheidegg</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -271,12 +275,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-default" data-start="13:20" data-end="14:05">
+      <li class="timeline-item cat-default" data-item-id="day1-kleine-scheidegg" data-start="13:20" data-end="14:05">
         <div class="t-time">13:20–14:05</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> Kleine Scheidegg</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> <span class="t-title-text">Kleine Scheidegg</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -286,12 +290,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="14:10" data-end="15:00">
+      <li class="timeline-item cat-train" data-item-id="day1-kleine-scheidegg-wengen-lauterbrunnen" data-start="14:10" data-end="15:00">
         <div class="t-time">Approx. 14:10–15:00</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Kleine Scheidegg → Wengen → Lauterbrunnen</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Kleine Scheidegg → Wengen → Lauterbrunnen</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -301,12 +305,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-view" data-start="15:00" data-end="15:25">
+      <li class="timeline-item cat-view" data-item-id="day1-lauterbrunnen-village" data-start="15:00" data-end="15:25">
         <div class="t-time">15:00–15:25</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> Lauterbrunnen village</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">📸</span> <span class="t-title-text">Lauterbrunnen village</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -316,12 +320,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="15:25" data-end="15:40">
+      <li class="timeline-item cat-train" data-item-id="day1-bus-to-tr-mmelbach-falls" data-start="15:25" data-end="15:40">
         <div class="t-time">15:25–15:40</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Bus to Trümmelbach Falls</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Bus to Trümmelbach Falls</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -331,12 +335,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-default" data-start="15:40" data-end="17:00">
+      <li class="timeline-item cat-default" data-item-id="day1-tr-mmelbach-falls" data-start="15:40" data-end="17:00">
         <div class="t-time">15:40–17:00</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> Trümmelbach Falls</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> <span class="t-title-text">Trümmelbach Falls</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -346,12 +350,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="17:00" data-end="17:20">
+      <li class="timeline-item cat-train" data-item-id="day1-return-bus" data-start="17:00" data-end="17:20">
         <div class="t-time">17:00–17:20</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Return bus</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Return bus</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -361,12 +365,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-train" data-start="17:20" data-end="18:30">
+      <li class="timeline-item cat-train" data-item-id="day1-lauterbrunnen-zweil-tschinen-grindelwald" data-start="17:20" data-end="18:30">
         <div class="t-time">Approx. 17:20–18:30</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> Lauterbrunnen → Zweilütschinen → Grindelwald</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🚂</span> <span class="t-title-text">Lauterbrunnen → Zweilütschinen → Grindelwald</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -376,12 +380,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-hotel" data-start="18:30" data-end="19:15">
+      <li class="timeline-item cat-hotel" data-item-id="day1-hotel-check-in" data-start="18:30" data-end="19:15">
         <div class="t-time">18:30–19:15</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🏨</span> Hotel check-in</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🏨</span> <span class="t-title-text">Hotel check-in</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -391,12 +395,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-food" data-start="19:30" data-end="21:00">
+      <li class="timeline-item cat-food" data-item-id="day1-dinner" data-start="19:30" data-end="21:00">
         <div class="t-time">19:30–21:00</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> Dinner</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🍽️</span> <span class="t-title-text">Dinner</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -406,12 +410,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-hike" data-start="21:00" data-end="21:30">
+      <li class="timeline-item cat-hike" data-item-id="day1-evening-village-walk" data-start="21:00" data-end="21:30">
         <div class="t-time">21:00–21:30</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> Evening village walk</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">🥾</span> <span class="t-title-text">Evening village walk</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -421,12 +425,12 @@
           </div>
         </details>
       </li>
-      <li class="timeline-item cat-default" data-start="21:30" data-end="23:59">
+      <li class="timeline-item cat-default" data-item-id="day1-prepare-day-2-route" data-start="21:30" data-end="23:59">
         <div class="t-time">21:30 onward</div>
         <div class="t-dot"></div>
         <details class="t-card" open>
           <summary>
-            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> Prepare Day 2 route</p>
+            <p class="t-title"><span class="t-live-badge t-badge-now">NOW</span><span class="t-live-badge t-badge-next">NEXT</span><span class="t-icon">⏱️</span> <span class="t-title-text">Prepare Day 2 route</span></p>
             <svg class="t-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="t-body">
@@ -467,6 +471,7 @@
   </div>
 </footer>
 
+<script src="assets/js/plan.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/chat.js" defer></script>
 </body>

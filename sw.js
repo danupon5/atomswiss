@@ -1,4 +1,4 @@
-const CACHE_NAME = "trip-cache-v2";
+const CACHE_NAME = "trip-cache-v3";
 const PRECACHE_URLS = [
   "index.html",
   "day1.html",
@@ -8,6 +8,7 @@ const PRECACHE_URLS = [
   "assets/css/style.css",
   "assets/js/main.js",
   "assets/js/chat.js",
+  "assets/js/plan.js",
   "assets/data/trip-context.json",
   "manifest.webmanifest",
   "assets/icons/icon-192.png",

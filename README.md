@@ -21,14 +21,23 @@ context so it can answer things like "what train do I need to catch next"
 or "what's the backup plan if it rains on day 1." Everything else on the
 site works fine without a key.
 
+The AI can also propose changes to the plan itself — extra restaurant,
+activity or photo-spot suggestions (each with a Google Maps link), or
+skipping an existing item. Nothing is applied automatically: every proposal
+shows as a preview card with its own Add/Remove button, and confirmed
+changes are saved to that browser's local storage (per day, per device —
+doesn't sync between your phone and laptop). Use the "Reset this day's
+plan" link next to a day's heading to undo everything for that day.
+
 ## Structure
 
 - `index.html` — trip overview, day cards (today's day is auto-highlighted), advance booking checklist, timing rules
 - `day1.html` … `day4.html` — hour-by-hour timeline for each day (each card is individually collapsible), plus day-specific notes (weather alternative, mountain safety, relaxed alternative). Each stop links out to Google Maps.
 - `assets/css/style.css` — shared styling
 - `assets/js/main.js` — mobile nav toggle, live now/next highlighting, service worker registration
-- `assets/js/chat.js` — "Ask about your trip" AI chat widget (bring-your-own Gemini key)
-- `assets/data/trip-context.json` — itinerary text fed to the AI as context
+- `assets/js/plan.js` — applies saved local plan edits (added/hidden items) on top of the static page
+- `assets/js/chat.js` — "Ask about your trip" AI chat widget (bring-your-own Gemini key), can propose plan edits
+- `assets/data/trip-context.json` — itinerary text (with stable item ids) fed to the AI as context
 - `manifest.webmanifest` / `sw.js` — offline install support (PWA)
 
 ## Run locally

@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  if (window.TripPlan) TripPlan.apply();
   highlightLiveTimeline();
   highlightTodayCard();
   registerServiceWorker();

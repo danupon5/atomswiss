@@ -9,6 +9,34 @@
   var history = []; // {role: "user"|"model", text: string}
   var els = {};
 
+  var ACTION_SCHEMA = {
+    type: "OBJECT",
+    properties: {
+      reply: { type: "STRING" },
+      actions: {
+        type: "ARRAY",
+        items: {
+          type: "OBJECT",
+          properties: {
+            type: { type: "STRING", "enum": ["add", "remove"] },
+            day: { type: "STRING" },
+            item_id: { type: "STRING" },
+            start: { type: "STRING" },
+            end: { type: "STRING" },
+            time: { type: "STRING" },
+            title: { type: "STRING" },
+            detail: { type: "STRING" },
+            note: { type: "STRING" },
+            map_query: { type: "STRING" },
+            category: { type: "STRING", "enum": ["train", "hike", "food", "view", "hotel", "default"] }
+          },
+          required: ["type", "day"]
+        }
+      }
+    },
+    required: ["reply"]
+  };
+
   function apiUrl(model, key) {
     return "https://generativelanguage.googleapis.com/v1beta/models/" +
       encodeURIComponent(model) + ":generateContent?key=" + encodeURIComponent(key);
@@ -16,6 +44,15 @@
 
   function getKey() { return localStorage.getItem(LS_KEY) || ""; }
   function getModel() { return localStorage.getItem(LS_MODEL) || DEFAULT_MODEL; }
+
+  function currentDayIso() {
+    var timeline = document.querySelector(".timeline[data-date]");
+    return timeline ? timeline.dataset.date : null;
+  }
+
+  function mapsUrl(query) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
+  }
 
   function buildUI() {
     var fab = document.createElement("button");
@@ -110,6 +147,89 @@
     bubble.textContent = text;
     els.thread.appendChild(bubble);
     els.thread.scrollTop = els.thread.scrollHeight;
+    return bubble;
+  }
+
+  function addActionCard(action) {
+    var card = document.createElement("div");
+    card.className = "ai-action-card";
+
+    if (action.type === "add") {
+      var meta = document.createElement("div");
+      meta.className = "ai-action-meta";
+      meta.textContent = (action.time || "") + " · " + (action.title || "Untitled");
+      card.appendChild(meta);
+
+      if (action.detail) {
+        var detail = document.createElement("div");
+        detail.className = "ai-action-detail";
+        detail.textContent = action.detail;
+        card.appendChild(detail);
+      }
+
+      if (action.map_query) {
+        var link = document.createElement("a");
+        link.className = "ai-action-map-link";
+        link.href = mapsUrl(action.map_query);
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "📍 View on Google Maps";
+        card.appendChild(link);
+      }
+
+      var addBtn = document.createElement("button");
+      addBtn.type = "button";
+      addBtn.className = "ai-action-btn ai-action-add";
+      addBtn.textContent = "➕ Add to plan";
+      addBtn.addEventListener("click", function () {
+        if (!window.TripPlan) return;
+        TripPlan.addItem(action.day, {
+          start: action.start || "00:00",
+          end: action.end || action.start || "23:59",
+          time: action.time || "",
+          title: action.title || "Untitled",
+          detail: action.detail || "",
+          note: action.note || "",
+          map_query: action.map_query || "",
+          category: action.category || ""
+        });
+        addBtn.disabled = true;
+        addBtn.textContent = "✓ Added — reloading…";
+        setTimeout(function () { location.reload(); }, 400);
+      });
+      card.appendChild(addBtn);
+    } else if (action.type === "remove") {
+      var li = document.querySelector('[data-item-id="' + action.item_id + '"]');
+      var titleText = li ? li.querySelector(".t-title-text").textContent.trim() : action.item_id;
+      var rmeta = document.createElement("div");
+      rmeta.className = "ai-action-meta";
+      rmeta.textContent = "Remove: " + titleText;
+      card.appendChild(rmeta);
+
+      if (!li) {
+        var warn = document.createElement("div");
+        warn.className = "ai-action-detail";
+        warn.textContent = "Couldn't find this item on the current page — open the right day first.";
+        card.appendChild(warn);
+      }
+
+      var rmBtn = document.createElement("button");
+      rmBtn.type = "button";
+      rmBtn.className = "ai-action-btn ai-action-remove";
+      rmBtn.textContent = "➖ Remove from plan";
+      rmBtn.disabled = !li;
+      rmBtn.addEventListener("click", function () {
+        if (!window.TripPlan) return;
+        TripPlan.hideItem(action.day, action.item_id);
+        rmBtn.disabled = true;
+        rmBtn.textContent = "✓ Removed — reloading…";
+        setTimeout(function () { location.reload(); }, 400);
+      });
+      card.appendChild(rmBtn);
+    }
+
+    els.thread.appendChild(card);
+    els.thread.scrollTop = els.thread.scrollHeight;
   }
 
   function ensureContext() {
@@ -148,12 +268,28 @@
     els.thread.scrollTop = els.thread.scrollHeight;
 
     ensureContext().then(function (context) {
+      var dayIso = currentDayIso();
+      var sysText = "You are a helpful trip-planning assistant embedded in this itinerary website. " +
+        "Answer questions using the itinerary context below. Keep answers concise. Reply in the same " +
+        "language the user writes in.\n\n" +
+        "You can also propose edits to the plan via the 'actions' array in your JSON response " +
+        "(the app shows the user a preview card for each action; nothing is applied until they click " +
+        "a button, so propose freely when it helps). Use type 'add' to suggest a restaurant, activity, " +
+        "or photo spot near what's being discussed — always include start/end (24h HH:MM), a human " +
+        "'time' string, title, detail, and map_query (a specific searchable place name + town + country) " +
+        "so the app can link to Google Maps. Use type 'remove' with the exact bracketed [item-id] from " +
+        "the context to suggest skipping an existing item. Every action needs a 'day' field set to the " +
+        "exact day_iso_date (e.g. 2026-07-29) it applies to" +
+        (dayIso ? (" — the user currently has " + dayIso + " open, so default new actions to that day " +
+          "unless they clearly ask about a different day.") : (" — the user is on the overview page, so " +
+          "if the day isn't clear from their question, leave actions empty and ask which day in 'reply'.")) +
+        "\n\n" + context;
+
       var body = {
-        system_instruction: {
-          parts: [{
-            text: "You are a helpful trip-planning assistant. Answer questions using the itinerary " +
-              "context below. Keep answers concise. Reply in the same language the user writes in.\n\n" + context
-          }]
+        system_instruction: { parts: [{ text: sysText }] },
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: ACTION_SCHEMA
         },
         contents: history.map(function (m) {
           return { role: m.role, parts: [{ text: m.text }] };
@@ -178,11 +314,29 @@
           return;
         }
         var candidates = result.data.candidates || [];
-        var reply = candidates.length && candidates[0].content && candidates[0].content.parts
+        var rawText = candidates.length && candidates[0].content && candidates[0].content.parts
           ? candidates[0].content.parts.map(function (p) { return p.text || ""; }).join("")
-          : "(no response)";
+          : "";
+
+        var reply = rawText || "(no response)";
+        var actions = [];
+        try {
+          var parsed = JSON.parse(rawText);
+          if (parsed && typeof parsed.reply === "string") {
+            reply = parsed.reply;
+            if (Array.isArray(parsed.actions)) actions = parsed.actions;
+          }
+        } catch (e) {
+          // Model didn't return valid JSON — fall back to showing the raw text as a plain reply.
+        }
+
         history.push({ role: "model", text: reply });
         addMessage("model", reply);
+        actions.forEach(function (action) {
+          if (action && (action.type === "add" || action.type === "remove") && action.day) {
+            addActionCard(action);
+          }
+        });
       })
       .catch(function (err) {
         thinking.remove();

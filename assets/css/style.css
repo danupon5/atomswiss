@@ -748,6 +748,109 @@ footer {
   .ai-fab { right: 14px; bottom: 14px; }
 }
 
+/* ---------- Plan overlay (AI-added / hidden items) ---------- */
+.timeline-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.timeline-heading-row h2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.reset-day-link {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reset-day-link:hover { color: var(--color-primary); }
+
+.hidden-items-toggle { margin: -8px 0 16px; }
+
+.hidden-toggle-btn {
+  background: none;
+  border: 1px dashed var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.hidden-toggle-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.timeline-item.t-hidden { display: none; }
+
+.timeline-item.t-added .t-card { border-style: dashed; }
+
+.ai-added-badge {
+  display: inline-block;
+  background: var(--color-view);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* ---------- AI action preview cards ---------- */
+.ai-action-card {
+  align-self: flex-start;
+  max-width: 92%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ai-action-meta { font-weight: 700; }
+
+.ai-action-detail { color: var(--color-muted); }
+
+.ai-action-map-link {
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.ai-action-map-link:hover { text-decoration: underline; }
+
+.ai-action-btn {
+  align-self: flex-start;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.ai-action-add { background: var(--color-hike); }
+.ai-action-remove { background: var(--color-hotel); }
+.ai-action-btn:hover { opacity: 0.9; }
+.ai-action-btn:disabled { opacity: 0.6; cursor: default; }
+
 @media print {
   .site-nav, .nav-toggle, .day-pager, .ai-fab, .ai-panel { display: none; }
   .hero { background: none; color: var(--color-ink); }
